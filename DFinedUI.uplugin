@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "DFinedUI",
+	"Description": "DFined's UMG UI Utilities",
+	"Category": "Other",
+	"CreatedBy": "DFined",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "DFinedUI",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
