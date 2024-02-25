@@ -83,21 +83,26 @@ public:
 
 	static UWidgetTree* AttemptFindWidgetTree(UWidget* Widget)
 	{
-		auto Outer = Widget->GetOuter();
-		auto AutoWidget = Cast<UWidget>(Outer);
-		auto AutoUserWidget = Cast<UUserWidget>(Outer);
-		auto WidgetTree = Cast<UWidgetTree>(Outer);
-		if (WidgetTree)
+		if(auto WidgetTree = Cast<UWidgetTree>(Widget))
 		{
 			return WidgetTree;
 		}
-		if (AutoUserWidget)
+		if(auto UserWidget = Cast<UUserWidget>(Widget))
 		{
-			return AutoUserWidget->WidgetTree;
+			return UserWidget->WidgetTree;
 		}
-		if (AutoWidget)
+		auto Outer = Widget->GetOuter();
+		if (auto OuterWidgetTree = Cast<UWidgetTree>(Outer))
 		{
-			AttemptFindWidgetTree(AutoWidget);
+			return OuterWidgetTree;
+		}
+		if (auto OuterUserWidget = Cast<UUserWidget>(Outer))
+		{
+			return OuterUserWidget->WidgetTree;
+		}
+		if (auto OuterWidget = Cast<UWidget>(Outer))
+		{
+			AttemptFindWidgetTree(OuterWidget);
 		}
 		if (auto ParentWidget = Widget->GetParent())
 		{

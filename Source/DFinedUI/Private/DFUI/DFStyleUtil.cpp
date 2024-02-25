@@ -21,7 +21,7 @@ FLinearColor DFStyleUtil::SELECTED_LEVEL_3 = FLinearColor(0.020833f, 0.020833f, 
 
 FLinearColor DFStyleUtil::LIGHT_TEXT_1 = FLinearColor(200, 200, 200);
 FSlateFontInfo DFStyleUtil::DEFAULT_FONT = FSlateFontInfo(
-	Cast<UObject>(LoadObject<UFont>(NULL, TEXT("/Game/SiegeGame/UI/DefaultFont.DefaultFont"))), 12, "Roboto"
+	Cast<UObject>(LoadObject<UFont>(NULL, TEXT("/DFinedUI/DefaultFont.DefaultFont"))), 12, "Roboto"
 );
 UTexture2D* DFStyleUtil::DEFAULT_TEXTURE = FDFinedUIModule::LoadGlobalObject<UTexture2D>("/Game/FireVRks/UI/Icons/UnknownTexture.UnknownTexture");
 
