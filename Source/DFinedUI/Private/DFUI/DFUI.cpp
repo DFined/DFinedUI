@@ -101,21 +101,16 @@ UExpandableArea* DFUI::MakeExpandableTab(UPanelWidget* Parent, UWidget* Header, 
 
 void DFUI::MoveChildUp(UPanelWidget* Widget, UWidget* Child)
 {
+	//TODO This doesn't work. To be removed
 	auto Num = Widget->GetChildIndex(Child);
 	if (Num > 0)
 	{
-		auto Children = Widget->GetAllChildren();
-		auto PrevChild = Children[Num - 1];
-		Children[Num - 1] = Child;
-		Children[Num] = PrevChild;
-
-		Widget->ClearChildren();
-
-		for (UWidget* ChildWidget : Children)
-		{
-			Widget->AddChild(ChildWidget);
-		}
+		auto Slots = Widget->GetSlots();
+		Slots[Num]->Content = Slots[Num-1]->Content;
+		Slots[Num - 1]->Content = Child;		
 	}
+	Widget->InvalidateLayoutAndVolatility();
+	Widget->ForceLayoutPrepass();
 }
 
 void DFUI::MoveChildDown(UPanelWidget* Widget, UWidget* Child)
@@ -123,17 +118,10 @@ void DFUI::MoveChildDown(UPanelWidget* Widget, UWidget* Child)
 	auto Num = Widget->GetChildIndex(Child);
 	if (Num < Widget->GetChildrenCount() - 1)
 	{
-		auto Children = Widget->GetAllChildren();
-		auto PrevChild = Children[Num + 1];
-		Children[Num + 1] = Child;
-		Children[Num] = PrevChild;
-
-		Widget->ClearChildren();
-
-		for (UWidget* ChildWidget : Children)
-		{
-			Widget->AddChild(ChildWidget);
-		}
+		auto Slots = Widget->GetSlots();
+		auto PrevSlot = Slots[Num + 1];
+		Slots[Num + 1] = Slots[Num];
+		Slots[Num] = PrevSlot;
 	}
 }
 
