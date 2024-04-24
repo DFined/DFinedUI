@@ -132,3 +132,10 @@ UTextBlock* DFUI::MakeLabel(UWidget* Parent, FString Name)
 	DFStyleUtil::TextBlockStyle(NameBox);
 	return NameBox;
 }
+
+UHorizontalBox* DFUI::AddBorderedHBox(UPanelWidget* Parent, FLinearColor Color)
+{
+	auto Border = AddBorder(Parent, Color);
+	auto Box = AddWidget<UHorizontalBox>(Border);
+	return Box;
+}

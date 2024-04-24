@@ -142,4 +142,6 @@ public:
 
 	static void MoveChildDown(UPanelWidget* Widget, UWidget* Child);
 	static UTextBlock* MakeLabel(UWidget* Parent, FString Name);
+
+	static UHorizontalBox* AddBorderedHBox(UPanelWidget* Parent, FLinearColor Color);
 };
